@@ -7,26 +7,25 @@ import (
 	"strings"
 )
 
-func main(){
+func main() {
 
-   /// Calculate simple interest
+	// Calculate simple interest
 	var input string
 	fmt.Println("Enter Principal, Rate, and Time:")
-	 _, err:= fmt.Scan(&input)
+	_, err := fmt.Scan(&input)
 
-	if err != nil{
-     fmt.Println("Invalid Input")
-	 return 
+	if err != nil {
+		fmt.Println("Invalid Input")
+		return
 	}
 	values := strings.Split(input, ",")
 	principal, _ := strconv.ParseFloat(values[0], 64)
 	rate, _ := strconv.ParseFloat(values[1], 64)
 	time, _ := strconv.ParseFloat(values[2], 64)
-	simpleInterest := utils.CalculateSimpleInterest(principal,rate, time)
+	simpleInterest := utils.CalculateSimpleInterest(principal, rate, time)
 	fmt.Printf("Simple Interest: %.2f\n", simpleInterest)
 
-
-	/// Calculate area of circle
+	// Calculate area of circle
 	var radius float64
 	fmt.Println("Enter radius")
 	fmt.Scanln(&radius)
