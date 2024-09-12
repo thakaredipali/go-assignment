@@ -10,7 +10,7 @@ func isEven(n int) bool {
 }
 
 func main() {
-	n := 0
+	n := 1
 
 	res := make(chan bool)
 	go func() {
@@ -23,6 +23,7 @@ func main() {
 			return
 		}
 		fmt.Println(n, "is odd")
+		res <- false
 
 	}()
 	<-res
