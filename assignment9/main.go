@@ -64,14 +64,16 @@ func getWebsiteStatuses(w http.ResponseWriter, r *http.Request) {
 		if status, exists := websiteMap[website]; exists {
 			websMap[website] = status
 		} else {
-			websMap["error"] = "Request parameter is not valid"
+			http.Error(w, "Invalid parameter", http.StatusBadRequest)
 		}
 
 	} else {
 		websMap = websiteMap
 	}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(websMap)
+	if len(websMap) != 0 {
+		json.NewEncoder(w).Encode(websMap)
+	}
 }
 
 func monitorWebsites() {
